@@ -1,0 +1,105 @@
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+✓ Ready in 2.2s
+
+○ Compiling / ...
+ GET / 200 in 376ms (next.js: 7ms, application-code: 369ms)
+ GET / 200 in 218ms (next.js: 6ms, application-code: 212ms)
+ GET / 200 in 882ms (next.js: 11ms, application-code: 871ms)
+ GET / 200 in 247ms (next.js: 21ms, application-code: 226ms)
+ GET / 404 in 3.2s (next.js: 2.8s, application-code: 414ms)
+ GET / 200 in 2.9s (next.js: 1494ms, application-code: 1397ms)
+ GET / 200 in 267ms (next.js: 23ms, application-code: 243ms)
+ GET / 200 in 2.7s (next.js: 903ms, application-code: 1750ms)
+✓ Compiled in 323ms
+ GET / 500 in 2.5s (next.js: 2.1s, application-code: 477ms)
+ GET / 500 in 2.7s (next.js: 2.6s, application-code: 38ms)
+✓ Compiled in 352ms
+ GET / 200 in 749ms (next.js: 424ms, application-code: 325ms)
+ GET / 200 in 762ms (next.js: 177ms, application-code: 585ms)
+✓ Compiled in 101ms
+ GET / 200 in 468ms (next.js: 145ms, application-code: 323ms)
+ GET / 200 in 118ms (next.js: 6ms, application-code: 112ms)
+ GET / 200 in 123ms (next.js: 11ms, application-code: 112ms)
+ GET / 200 in 530ms (next.js: 6ms, application-code: 524ms)
+ GET / 200 in 648ms (next.js: 8ms, application-code: 641ms)
+ GET / 200 in 623ms (next.js: 6ms, application-code: 618ms)
+ GET / 200 in 574ms (next.js: 6ms, application-code: 568ms)
+✓ Compiled in 156ms
+ GET / 200 in 231ms (next.js: 7ms, application-code: 225ms)
+ GET / 200 in 208ms (next.js: 5ms, application-code: 203ms)
+ GET / 200 in 172ms (next.js: 4ms, application-code: 167ms)
+ GET / 200 in 2.6s (next.js: 197ms, application-code: 2.4s)
+✓ Compiled in 638ms
+ GET / 200 in 2.1s (next.js: 702ms, application-code: 1365ms)
+ GET / 200 in 413ms (next.js: 7ms, application-code: 406ms)
+ GET / 200 in 759ms (next.js: 7ms, application-code: 752ms)
+ GET /pakal/logo-pakal.webp 404 in 1004ms (next.js: 497ms, application-code: 507ms)
+ GET /pakal/recepcion.webp 404 in 1008ms (next.js: 677ms, application-code: 331ms)
+ GET / 200 in 1417ms (next.js: 8ms, application-code: 1409ms)
+ GET /pakal/proceso.webp 404 in 1050ms (next.js: 183ms, application-code: 867ms)
+ GET /pakal/precision.webp 404 in 1046ms (next.js: 333ms, application-code: 712ms)
+ GET /pakal/interior.webp 404 in 1045ms (next.js: 387ms, application-code: 657ms)
+ GET /hero-laboratorio-pakal.webp 404 in 395ms (next.js: 49ms, application-code: 345ms)
+ GET /pakal/recepcion.webp 404 in 392ms (next.js: 82ms, application-code: 310ms)
+ GET /pakal/logo-pakal.webp 404 in 457ms (next.js: 34ms, application-code: 423ms)
+ GET /pakal/preparacion.webp 404 in 456ms (next.js: 82ms, application-code: 374ms)
+ GET / 200 in 1730ms (next.js: 219ms, application-code: 1511ms)
+ GET / 200 in 1140ms (next.js: 100ms, application-code: 1040ms)
+ GET /pakal/equipo.webp 404 in 164ms (next.js: 27ms, application-code: 136ms)
+ GET / 200 in 895ms (next.js: 22ms, application-code: 872ms)
+ GET / 200 in 894ms (next.js: 147ms, application-code: 746ms)
+ GET / 200 in 624ms (next.js: 7ms, application-code: 617ms)
+ GET / 200 in 630ms (next.js: 118ms, application-code: 512ms)
+ GET /pakal/logo-pakal.webp 404 in 128ms (next.js: 10ms, application-code: 119ms)
+✓ Compiled in 2.8s
+ GET / 200 in 5.5s (next.js: 4.0s, application-code: 1549ms)
+ GET / 200 in 668ms (next.js: 106ms, application-code: 562ms)
+ GET / 200 in 4.0s (next.js: 10ms, application-code: 4.0s)
+ GET / 200 in 3.6s (next.js: 813ms, application-code: 2.8s)
+ GET / 200 in 3.6s (next.js: 153ms, application-code: 3.4s)
+ GET / 200 in 3.6s (next.js: 1190ms, application-code: 2.4s)
+ GET / 200 in 4.5s (next.js: 383ms, application-code: 4.1s)
+✓ Compiled in 1022ms
+ GET / 200 in 4.3s (next.js: 3.1s, application-code: 1184ms)
+ GET / 200 in 227ms (next.js: 14ms, application-code: 213ms)
+✓ Compiled in 200ms
+ GET / 500 in 1244ms (next.js: 278ms, application-code: 966ms)
+✓ Compiled in 121ms
+ GET / 500 in 1676ms (next.js: 246ms, application-code: 1430ms)
+✓ Compiled in 161ms
+ GET / 500 in 542ms (next.js: 213ms, application-code: 329ms)
+✓ Compiled in 151ms
+ GET / 200 in 2.0s (next.js: 258ms, application-code: 1744ms)
+✓ Compiled in 184ms
+ GET / 200 in 967ms (next.js: 319ms, application-code: 648ms)
+ GET / 200 in 300ms (next.js: 8ms, application-code: 293ms)
+✓ Compiled in 119ms
+ GET / 200 in 762ms (next.js: 216ms, application-code: 546ms)
+ GET / 200 in 372ms (next.js: 5ms, application-code: 367ms)
+✓ Compiled in 290ms
+✓ Compiled in 218ms
+ GET / 200 in 2.5s (next.js: 173ms, application-code: 2.3s)
+ GET / 200 in 956ms (next.js: 7ms, application-code: 949ms)
+ GET / 200 in 1065ms (next.js: 16ms, application-code: 1049ms)
+✓ Compiled in 444ms
+ GET / 200 in 650ms (next.js: 8ms, application-code: 642ms)
+ GET / 200 in 552ms (next.js: 7ms, application-code: 545ms)
+ GET / 200 in 785ms (next.js: 9ms, application-code: 776ms)
+ GET / 200 in 459ms (next.js: 7ms, application-code: 452ms)
+ GET / 200 in 1469ms (next.js: 15ms, application-code: 1454ms)
+ GET / 200 in 863ms (next.js: 10ms, application-code: 853ms)
+✓ Compiled in 3.2s
+ GET / 200 in 10.9s (next.js: 8.7s, application-code: 2.1s)
+ GET / 200 in 9.8s (next.js: 5.5s, application-code: 4.3s)
+ GET / 200 in 1172ms (next.js: 43ms, application-code: 1129ms)
+ GET / 200 in 1181ms (next.js: 878ms, application-code: 303ms)
+ GET / 200 in 5.2s (next.js: 242ms, application-code: 4.9s)
+ GET / 200 in 750ms (next.js: 8ms, application-code: 743ms)
+ GET / 200 in 930ms (next.js: 15ms, application-code: 915ms)
+ GET / 200 in 1114ms (next.js: 12ms, application-code: 1102ms)
+ GET / 200 in 415ms (next.js: 7ms, application-code: 408ms)
+ GET / 200 in 516ms (next.js: 12ms, application-code: 503ms)
+✓ Compiled in 1495ms
+[?25h

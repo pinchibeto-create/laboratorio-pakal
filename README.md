@@ -12,11 +12,11 @@ Sitio informativo de Laboratorio Pakal en Palenque, Chiapas.
 
 ## Desarrollo local
 
-Requiere Node.js 22.13 o posterior y pnpm.
+Requiere Node.js 22.13 o posterior y npm.
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 Abre `http://localhost:3000`.
@@ -24,8 +24,8 @@ Abre `http://localhost:3000`.
 ## Validación
 
 ```bash
-pnpm build
-pnpm lint
+npm run build
+npm run lint
 ```
 
 ## Publicación en Netlify
@@ -34,7 +34,7 @@ pnpm lint
 2. En Netlify selecciona **Add new project → Import an existing project**.
 3. Selecciona el repositorio.
 4. Netlify utilizará la configuración incluida en `netlify.toml`:
-   - comando: `pnpm run build`
+   - comando: `node node_modules/next/dist/bin/next build`
    - directorio de publicación: `.next`
    - Node.js: `22.13.0`
 5. Publica el proyecto.
