@@ -33,9 +33,9 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "es_MX",
       images: [
         {
-          url: `${origin}/og.png`,
-          width: 1536,
-          height: 1024,
+          url: `${origin}/og.webp`,
+          width: 1000,
+          height: 667,
           alt: "Laboratorio Pakal, análisis clínicos en Palenque, Chiapas.",
         },
       ],
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [`${origin}/og.png`],
+      images: [`${origin}/og.webp`],
     },
   };
 }

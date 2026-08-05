@@ -22,34 +22,46 @@ const whatsappUrl = `https://wa.me/${siteData.whatsappNumber}?text=${encodeURICo
   whatsappMessage,
 )}`;
 
+function createWhatsAppUrl(message: string) {
+  return `https://wa.me/${siteData.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
 const services = [
   {
-    number: "01",
-    title: "Análisis clínicos",
-    text: "Estudios realizados a partir de muestras biológicas para apoyar la evaluación y el seguimiento de la salud.",
-    image: "/pakal/proceso.png",
-    alt: "Procesamiento conceptual de una muestra dentro de un laboratorio clínico",
+    icon: "blood" as const,
+    title: "Análisis de sangre",
+    text: "Información sobre estudios realizados a partir de una muestra sanguínea.",
+    message: "Hola, quiero solicitar información sobre análisis de sangre.",
   },
   {
-    number: "02",
-    title: "Estudios de rutina",
-    text: "Opciones para chequeos generales, seguimiento médico y evaluaciones periódicas.",
-    image: "/pakal/precision.png",
-    alt: "Microscopio y muestras en una imagen conceptual de Laboratorio Pakal",
+    icon: "urine" as const,
+    title: "Análisis de orina",
+    text: "Consulta disponibilidad y preparación para estudios realizados con muestras de orina.",
+    message: "Hola, quiero solicitar información sobre análisis de orina.",
   },
   {
-    number: "03",
-    title: "Perfiles de laboratorio",
-    text: "Conjuntos de estudios relacionados con distintas necesidades de prevención y seguimiento.",
-    image: "/pakal/interior.png",
-    alt: "Interior conceptual de un laboratorio clínico organizado y luminoso",
+    icon: "sample" as const,
+    title: "Análisis de heces",
+    text: "Orientación sobre recolección, preparación y disponibilidad de estudios de heces.",
+    message: "Hola, quiero solicitar información sobre análisis de heces.",
   },
   {
-    number: "04",
+    icon: "special" as const,
+    title: "Pruebas especiales",
+    text: "Consulta directamente con el laboratorio la disponibilidad y requisitos de estudios especiales.",
+    message: "Hola, quiero saber si realizan una prueba especial.",
+  },
+  {
+    icon: "profile" as const,
+    title: "Perfiles de salud",
+    text: "Conjuntos de estudios relacionados con distintas necesidades de evaluación y seguimiento.",
+    message: "Hola, quiero solicitar información sobre sus perfiles de salud.",
+  },
+  {
+    icon: "tube" as const,
     title: "Toma de muestras",
-    text: "Orientación sobre requisitos, horarios y preparación antes de acudir al laboratorio.",
-    image: "/hero-laboratorio-pakal.png",
-    alt: "Profesional de laboratorio preparando una muestra en un espacio clínico local",
+    text: "Recibe orientación sobre horarios, requisitos y preparación antes de acudir.",
+    message: "Hola, quiero solicitar información sobre la toma de muestras.",
   },
 ];
 
@@ -72,17 +84,46 @@ const steps = [
   {
     number: "04",
     title: "Recibe tus resultados",
-    text: "El personal te informará el medio y tiempo de entrega correspondiente.",
+    text: "Una vez listos y validados, te los enviamos por WhatsApp. El tiempo depende de cada estudio.",
   },
 ];
 
-const preparationQuestions = [
-  "¿Necesito acudir en ayunas?",
-  "¿Puedo tomar agua?",
-  "¿Debo suspender medicamentos?",
-  "¿Qué documentos debo llevar?",
-  "¿A qué hora debo acudir?",
-  "¿Cómo recolecto una muestra?",
+const preparationCards = [
+  {
+    icon: "clock" as const,
+    title: "Ayuno",
+    text: "Algunos estudios pueden requerir ayuno. Confirma las indicaciones antes de acudir.",
+    image: "/pakal/preparacion.webp",
+    alt: "Profesional orientando a un paciente antes de un estudio",
+  },
+  {
+    icon: "activity" as const,
+    title: "Evita ejercicio intenso",
+    text: "Ciertos estudios pueden requerir evitar actividad física antes de la toma de muestra.",
+    image: "/hero-laboratorio-pakal.webp",
+    alt: "Profesional preparando cuidadosamente una muestra de laboratorio",
+  },
+  {
+    icon: "medicine" as const,
+    title: "Informa sobre medicamentos",
+    text: "Comunica al personal si tomas medicamentos o suplementos. No los suspendas sin indicación médica.",
+    image: "/pakal/equipo.webp",
+    alt: "Equipo profesional de Laboratorio Pakal",
+  },
+  {
+    icon: "cup" as const,
+    title: "Evita cafeína y alcohol",
+    text: "Pregunta si tu estudio requiere evitar ciertas bebidas o alimentos previamente.",
+    image: "/pakal/proceso.webp",
+    alt: "Procesamiento conceptual de muestras en el laboratorio",
+  },
+  {
+    icon: "instructions" as const,
+    title: "Sigue las indicaciones específicas",
+    text: "Los requisitos cambian según el estudio. Solicita orientación por WhatsApp.",
+    image: "/pakal/interior.webp",
+    alt: "Interior conceptual de Laboratorio Pakal",
+  },
 ];
 
 const reasons = [
@@ -93,7 +134,24 @@ const reasons = [
   "Orientación por WhatsApp",
 ];
 
-type IconName = "clock" | "pin" | "chat" | "arrow" | "check";
+type IconName =
+  | "clock"
+  | "pin"
+  | "chat"
+  | "arrow"
+  | "check"
+  | "blood"
+  | "urine"
+  | "sample"
+  | "special"
+  | "profile"
+  | "tube"
+  | "activity"
+  | "medicine"
+  | "cup"
+  | "instructions"
+  | "document"
+  | "phone";
 
 function Icon({ name }: { name: IconName }) {
   if (name === "clock") {
@@ -123,6 +181,104 @@ function Icon({ name }: { name: IconName }) {
     );
   }
 
+  if (name === "blood") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5Z" />
+        <path d="M9.2 14.4a3 3 0 0 0 2.8 2" />
+      </svg>
+    );
+  }
+
+  if (name === "urine") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 4.5h8M7 7h10l-1 12H8L7 7Z" />
+        <path d="M9.2 12.5h5.6" />
+      </svg>
+    );
+  }
+
+  if (name === "sample") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7.5 5.5h9v3h-9zM8.5 8.5h7v10h-7z" />
+        <path d="M10 14.5h4" />
+      </svg>
+    );
+  }
+
+  if (name === "special") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 4.5h6M10 4.5v5l-4 7a2 2 0 0 0 1.8 3h8.4a2 2 0 0 0 1.8-3l-4-7v-5" />
+        <path d="M8.2 15h7.6M19 4v3M17.5 5.5h3" />
+      </svg>
+    );
+  }
+
+  if (name === "profile") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="8.5" cy="8" r="3" />
+        <path d="M3.8 18a4.7 4.7 0 0 1 9.4 0M15.5 16.5l2-2 1.5 1.2 2-3.2" />
+      </svg>
+    );
+  }
+
+  if (name === "tube") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 4h8M9.5 4v11.5a4 4 0 0 0 5 3.9 4 4 0 0 0 3-3.9V4" />
+        <path d="M9.5 13h8" />
+      </svg>
+    );
+  }
+
+  if (name === "activity") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 12h4l2-4 3.2 8 2.2-4H21" />
+      </svg>
+    );
+  }
+
+  if (name === "medicine") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m8 17 8.8-8.8a3 3 0 1 0-4.2-4.2L3.8 12.8A3 3 0 1 0 8 17Z" />
+        <path d="m8.3 8.3 7.4 7.4" />
+      </svg>
+    );
+  }
+
+  if (name === "cup") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 7h12v7a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V7Z" />
+        <path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17M8 4.5v-2M12 4.5v-2" />
+      </svg>
+    );
+  }
+
+  if (name === "instructions" || name === "document") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 4.5h10a2 2 0 0 1 2 2v13H5v-13a2 2 0 0 1 2-2Z" />
+        <path d="M9 3h6v3H9zM8.5 11h7M8.5 15h5" />
+      </svg>
+    );
+  }
+
+  if (name === "phone") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="7" y="2.8" width="10" height="18.4" rx="2" />
+        <path d="M10 6h4M11 18h2" />
+      </svg>
+    );
+  }
+
   if (name === "check") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -142,7 +298,7 @@ function Logo({ inverse = false }: { inverse?: boolean }) {
   return (
     <span className={`brand-logo${inverse ? " brand-logo--inverse" : ""}`}>
       <Image
-        src="/pakal/logo-pakal.png"
+        src="/pakal/logo-pakal.webp"
         alt="Laboratorio Pakal"
         width={560}
         height={160}
@@ -155,14 +311,16 @@ function Logo({ inverse = false }: { inverse?: boolean }) {
 function WhatsAppLink({
   children,
   className = "",
+  message,
 }: {
   children: React.ReactNode;
   className?: string;
+  message?: string;
 }) {
   return (
     <a
       className={className}
-      href={whatsappUrl}
+      href={message ? createWhatsAppUrl(message) : whatsappUrl}
       target="_blank"
       rel="noreferrer"
     >
@@ -239,32 +397,44 @@ export default function Home() {
         <div className="container hero-grid">
           <div className="hero-copy reveal reveal--one">
             <p className="eyebrow">Laboratorio clínico en Palenque, Chiapas</p>
-            <h1>Información clara para cuidar tu salud</h1>
+            <h1>
+              <span>Resultados confiables</span>
+              <span>para cuidar tu salud</span>
+            </h1>
             <p className="hero-lead">
-              En Laboratorio Pakal te orientamos para que conozcas los estudios
-              disponibles, su preparación y la forma de recibir tus resultados.
+              <span className="hero-lead-desktop">
+                Análisis clínicos con atención profesional y un servicio cercano.
+                Una vez que tus resultados estén listos y validados, te los
+                enviamos directamente por WhatsApp.
+              </span>
+              <span className="hero-lead-mobile">
+                Atención profesional en Palenque y entrega de resultados
+                directamente por WhatsApp.
+              </span>
             </p>
 
-            <div className="hero-actions">
+            <div className="hero-actions hero-actions--desktop">
               <WhatsAppLink className="button button--whatsapp button--large">
                 Cotizar por WhatsApp
                 <Icon name="arrow" />
               </WhatsAppLink>
               <a
                 className="button button--outline button--large"
-                href={siteData.mapsUrl}
-                target="_blank"
-                rel="noreferrer"
+                href="#estudios"
               >
-                Cómo llegar
-                <Icon name="pin" />
+                Consultar servicios
+                <Icon name="arrow" />
               </a>
             </div>
 
-            <div className="hero-highlights" aria-label="Datos destacados">
-              <span>Atención desde las 6:30 a.m.</span>
-              <span>Ubicación en Palenque</span>
-              <span>Atención de lunes a domingo</span>
+            <div className="hero-benefit hero-benefit--desktop">
+              <span className="hero-benefit-icon">
+                <Icon name="chat" />
+              </span>
+              <p>
+                <strong>Resultados enviados directamente por WhatsApp</strong>
+                <small>El tiempo de entrega depende de cada estudio.</small>
+              </p>
             </div>
           </div>
 
@@ -273,7 +443,7 @@ export default function Home() {
             <div className="hero-orbit hero-orbit--small" aria-hidden="true" />
             <div className="hero-image">
               <Image
-                src="/pakal/recepcion.png"
+                src="/pakal/recepcion.webp"
                 alt="Imagen conceptual de una profesional de Laboratorio Pakal atendiendo amablemente a una paciente"
                 fill
                 sizes="(max-width: 850px) 100vw, 52vw"
@@ -284,12 +454,33 @@ export default function Home() {
               <span className="hero-card-icon">
                 <Icon name="chat" />
               </span>
-              <p>
+              <p className="hero-card-copy hero-card-copy--desktop">
                 <strong>¿Tienes una orden médica?</strong>
                 Envíala por WhatsApp para solicitar información.
               </p>
+              <p className="hero-card-copy hero-card-copy--mobile">
+                <strong>Resultados por WhatsApp</strong>
+                Directamente en tu celular
+              </p>
             </div>
             <span className="image-label">Imagen conceptual temporal</span>
+          </div>
+
+          <div className="hero-mobile-actions">
+            <WhatsAppLink className="button button--whatsapp button--large">
+              Cotizar por WhatsApp
+              <Icon name="arrow" />
+            </WhatsAppLink>
+            <a className="hero-studies-link" href="#estudios">
+              Ver estudios <span aria-hidden="true">→</span>
+            </a>
+            <p className="hero-mobile-note">
+              <span className="hero-mobile-note-icon" aria-hidden="true">
+                <Icon name="document" />
+              </span>
+              Te enviamos tus resultados por WhatsApp una vez que estén listos y
+              validados. El tiempo depende de cada estudio.
+            </p>
           </div>
         </div>
       </section>
@@ -301,7 +492,7 @@ export default function Home() {
               <Icon name="clock" />
             </span>
             <div>
-              <p className="micro-label">Horario</p>
+              <p className="micro-label">Horario de atención</p>
               <strong>{siteData.hours.weekdays}</strong>
               <span>{siteData.hours.sunday}</span>
             </div>
@@ -313,6 +504,14 @@ export default function Home() {
             <div>
               <p className="micro-label">Ubicación</p>
               <strong>{siteData.address}</strong>
+              <a
+                className="quick-link"
+                href={siteData.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Abrir mapa
+              </a>
             </div>
           </article>
           <article>
@@ -320,10 +519,23 @@ export default function Home() {
               <Icon name="chat" />
             </span>
             <div>
-              <p className="micro-label">Atención</p>
-              <strong>
+              <p className="micro-label">Resultados por WhatsApp</p>
+              <strong>Recibe tus resultados sin regresar a recogerlos</strong>
+              <span>
+                Te los enviamos por WhatsApp una vez que estén listos y validados.
+              </span>
+            </div>
+          </article>
+          <article>
+            <span className="line-icon">
+              <Icon name="check" />
+            </span>
+            <div>
+              <p className="micro-label">Atención cercana</p>
+              <strong>Orientación clara y atención profesional</strong>
+              <span>
                 Consulta disponibilidad, preparación y costo de tus estudios.
-              </strong>
+              </span>
             </div>
           </article>
         </div>
@@ -335,40 +547,27 @@ export default function Home() {
 
       <section className="section studies" id="estudios">
         <div className="container">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Información de estudios</p>
-              <h2>Estudios para cada necesidad</h2>
-            </div>
-            <p>
-              Consulta las diferentes categorías de estudios y comunícate con el
-              laboratorio para confirmar disponibilidad, precio y preparación.
-            </p>
+          <div className="section-title-centered">
+            <p className="eyebrow">Estudios de laboratorio</p>
+            <h2>Nuestros servicios</h2>
+            <span className="title-rule" aria-hidden="true" />
           </div>
 
-          <div className="service-editorial">
-            {services.map((service, index) => (
-              <article
-                className={`service-card${index === 0 || index === 3 ? " service-card--wide" : ""}`}
-                key={service.number}
-              >
-                <div className="service-image">
-                  <Image
-                    src={service.image}
-                    alt={service.alt}
-                    fill
-                    sizes="(max-width: 760px) 100vw, 50vw"
-                  />
-                  <span>{service.number}</span>
-                </div>
-                <div className="service-copy">
-                  <h3>{service.title}</h3>
-                  <p>{service.text}</p>
-                  <WhatsAppLink className="text-link">
-                    Solicitar información
-                    <Icon name="arrow" />
-                  </WhatsAppLink>
-                </div>
+          <div className="service-compact-grid">
+            {services.map((service) => (
+              <article className="service-compact-card" key={service.title}>
+                <span className="service-icon">
+                  <Icon name={service.icon} />
+                </span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <WhatsAppLink
+                  className="service-link"
+                  message={service.message}
+                >
+                  Solicitar información
+                  <Icon name="arrow" />
+                </WhatsAppLink>
               </article>
             ))}
           </div>
@@ -400,7 +599,7 @@ export default function Home() {
           </div>
           <div className="order-visual">
             <Image
-              src="/pakal/preparacion.png"
+              src="/pakal/preparacion.webp"
               alt="Imagen conceptual de una profesional explicando una orden médica a un paciente"
               fill
               sizes="(max-width: 850px) 100vw, 48vw"
@@ -435,44 +634,91 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section preparation" id="preparacion">
-        <div className="container preparation-grid">
-          <div className="preparation-intro">
+      <section className="section preparation preparation-cards-section" id="preparacion">
+        <div className="container">
+          <div className="section-title-centered">
             <p className="eyebrow">Antes de acudir</p>
-            <h2>Prepárate para tu estudio</h2>
-            <p>
-              Una preparación adecuada ayuda a que la toma de muestra se realice
-              correctamente. Consulta siempre las indicaciones específicas de tu
-              estudio.
-            </p>
-            <div className="preparation-image">
-              <Image
-                src="/hero-laboratorio-pakal.png"
-                alt="Profesional de laboratorio preparando cuidadosamente una muestra"
-                fill
-                sizes="(max-width: 850px) 100vw, 42vw"
-              />
-            </div>
+            <h2>Preparación para estudios</h2>
+            <span className="title-rule" aria-hidden="true" />
           </div>
 
-          <div className="accordion">
-            {preparationQuestions.map((question, index) => (
-              <details key={question} open={index === 0}>
-                <summary>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  {question}
-                  <i aria-hidden="true">+</i>
-                </summary>
-                <p>
-                  Las indicaciones dependen del estudio. Comunícate con Laboratorio
-                  Pakal para recibir orientación.
-                </p>
-              </details>
+          <div className="preparation-card-grid">
+            {preparationCards.map((card) => (
+              <article className="preparation-card" key={card.title}>
+                <div className="preparation-card-image">
+                  <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1120px) 33vw, 20vw"
+                  />
+                </div>
+                <span className="preparation-card-icon">
+                  <Icon name={card.icon} />
+                </span>
+                <div className="preparation-card-copy">
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                </div>
+              </article>
             ))}
-            <WhatsAppLink className="button button--blue preparation-button">
-              Consultar mi preparación
+          </div>
+
+          <div className="preparation-action">
+            <WhatsAppLink
+              className="button button--blue button--large"
+              message="Hola, quiero confirmar cómo debo prepararme para mis estudios."
+            >
+              Consultar preparación por WhatsApp
               <Icon name="arrow" />
             </WhatsAppLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="results" id="resultados">
+        <div className="results-pattern" aria-hidden="true" />
+        <div className="container results-grid">
+          <div className="results-copy">
+            <p className="eyebrow eyebrow--light">Entrega de resultados</p>
+            <h2>Tus resultados directamente en WhatsApp</h2>
+            <p>
+              Una vez que tus estudios estén listos y validados, te los enviamos
+              directamente por WhatsApp para que puedas consultarlos sin regresar
+              únicamente a recogerlos.
+            </p>
+            <p className="results-note">
+              El tiempo de entrega varía según el tipo de análisis. Al realizar tu
+              estudio, consulta el tiempo estimado correspondiente.
+            </p>
+            <WhatsAppLink
+              className="button button--whatsapp button--large"
+              message="Hola, quiero solicitar información sobre la entrega de mis resultados."
+            >
+              Preguntar por mis resultados
+              <Icon name="arrow" />
+            </WhatsAppLink>
+          </div>
+          <div className="results-visual" aria-label="Ilustración de un resultado recibido en el celular">
+            <div className="results-phone">
+              <span className="results-phone-top">
+                <Icon name="phone" />
+                WhatsApp
+              </span>
+              <div className="results-message">
+                <span>
+                  <Icon name="document" />
+                </span>
+                <div>
+                  <strong>Resultados validados</strong>
+                  <small>Documento recibido en tu celular</small>
+                </div>
+              </div>
+              <span className="results-check">
+                <Icon name="check" />
+                Listo para consultar
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -483,7 +729,7 @@ export default function Home() {
             <div className="about-shape" aria-hidden="true" />
             <div className="about-image">
               <Image
-                src="/pakal/equipo.png"
+                src="/pakal/equipo.webp"
                 alt="Imagen conceptual del equipo de atención de Laboratorio Pakal"
                 fill
                 sizes="(max-width: 850px) 100vw, 50vw"
@@ -514,39 +760,6 @@ export default function Home() {
               Hablar con el laboratorio
               <Icon name="arrow" />
             </WhatsAppLink>
-          </div>
-        </div>
-      </section>
-
-      <section className="results" id="resultados">
-        <div className="results-pattern" aria-hidden="true" />
-        <div className="container results-grid">
-          <div className="results-copy">
-            <p className="eyebrow eyebrow--light">Entrega de estudios</p>
-            <h2>Información sobre tus resultados</h2>
-            <p>
-              Comunícate con el laboratorio para conocer el medio y tiempo de
-              entrega de tus estudios.
-            </p>
-            <WhatsAppLink className="button button--light button--large">
-              Preguntar por mis resultados
-              <Icon name="arrow" />
-            </WhatsAppLink>
-          </div>
-          <div className="future-panel">
-            <span className="future-tag">Integración futura</span>
-            <h3>Acceso a resultados</h3>
-            <p>
-              Este espacio está preparado para conectar una plataforma, folio,
-              enlace externo o instrucciones de descarga cuando el laboratorio lo
-              confirme.
-            </p>
-            <div className="future-fields" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <small>No es un portal activo.</small>
           </div>
         </div>
       </section>
@@ -585,7 +798,7 @@ export default function Home() {
             <div className="location-details">
               <div className="location-photo">
                 <Image
-                  src="/pakal/interior.png"
+                  src="/pakal/interior.webp"
                   alt="Imagen conceptual temporal de las instalaciones de Laboratorio Pakal"
                   fill
                   sizes="(max-width: 850px) 100vw, 40vw"
@@ -633,11 +846,12 @@ export default function Home() {
         <div className="final-shape" aria-hidden="true" />
         <div className="container final-grid">
           <div>
-            <p className="eyebrow eyebrow--light">Antes de tu visita</p>
-            <h2>Resuelve tus dudas antes de acudir</h2>
+            <p className="eyebrow eyebrow--light">Atención por WhatsApp</p>
+            <h2>Cotiza tus estudios y recibe orientación por WhatsApp</h2>
             <p>
-              Escríbenos para consultar disponibilidad, precio y preparación de tus
-              estudios.
+              Envíanos el nombre de tus estudios o una fotografía de tu orden
+              médica. Te informaremos sobre disponibilidad, preparación, costo y
+              forma de entrega de resultados.
             </p>
             <div className="final-actions">
               <WhatsAppLink className="button button--whatsapp button--large">
@@ -657,7 +871,7 @@ export default function Home() {
           </div>
           <div className="final-image">
             <Image
-              src="/pakal/recepcion.png"
+              src="/pakal/recepcion.webp"
               alt="Imagen conceptual de atención cercana en la recepción de Laboratorio Pakal"
               fill
               sizes="(max-width: 850px) 100vw, 44vw"
