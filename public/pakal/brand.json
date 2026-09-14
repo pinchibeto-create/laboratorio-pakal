@@ -1,0 +1,59 @@
+{
+  "brand": {
+    "name": "Laboratorio Pakal",
+    "fullName": "Laboratorio de Análisis Clínicos Pakal",
+    "location": "Palenque, Chiapas, México",
+    "logo": {
+      "primary": "/pakal/logo-pakal.webp"
+    },
+    "typography": {
+      "headings": {
+        "family": "Manrope",
+        "weights": [600, 700, 800]
+      },
+      "body": {
+        "family": "Inter",
+        "weights": [400, 500, 600, 700]
+      }
+    },
+    "colors": {
+      "navy": "#073B5C",
+      "navyDeep": "#052E49",
+      "blue": "#168CB8",
+      "sky": "#54B7D5",
+      "ice": "#EDF8FB",
+      "warmWhite": "#FCFCFA",
+      "sand": "#F3EFE8",
+      "ink": "#123047",
+      "whatsapp": "#25D366"
+    }
+  },
+  "positioning": {
+    "primary": "Análisis clínicos en Palenque",
+    "tagline": "Resultados confiables para cuidar tu salud",
+    "differentiators": [
+      "atención cercana",
+      "orientación por WhatsApp",
+      "resultados por WhatsApp"
+    ]
+  },
+  "voice": {
+    "tone": ["claro", "cercano", "profesional", "tranquilo"],
+    "avoid": [
+      "alarmismo",
+      "diagnósticos",
+      "promesas absolutas",
+      "servicios no confirmados",
+      "certificaciones no verificadas"
+    ]
+  },
+  "content": {
+    "primaryActions": [
+      "consultar estudios",
+      "cotizar orden médica",
+      "consultar resultados",
+      "cómo llegar"
+    ],
+    "mobileNavigation": ["inicio", "estudios", "whatsapp", "ubicación"]
+  }
+}

@@ -5,8 +5,7 @@ const siteData = {
   phoneDisplay: "916 102 0613",
   whatsappNumber: "529161020613",
   email: "laboratoriopakal@gmail.com",
-  address:
-    "Av. Juárez S/N, altos, arriba de COMEX, Palenque, Chiapas.",
+  address: "Av. Juárez S/N, altos, arriba de COMEX, Palenque, Chiapas.",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Laboratorio+Pakal+Av.+Juarez+Palenque+Chiapas",
   facebookUrl: "https://www.facebook.com/LaboratorioPakal/",
@@ -18,6 +17,7 @@ const siteData = {
 
 const whatsappMessage =
   "Hola, Laboratorio Pakal. Quisiera cotizar unos estudios y recibir información sobre su preparación.";
+
 const whatsappUrl = `https://wa.me/${siteData.whatsappNumber}?text=${encodeURIComponent(
   whatsappMessage,
 )}`;
@@ -65,64 +65,26 @@ const services = [
   },
 ];
 
-const steps = [
+const preparationFaqs = [
   {
-    number: "01",
-    title: "Envíanos tu solicitud",
-    text: "Comparte por WhatsApp el nombre de los estudios o una fotografía de tu orden médica.",
+    title: "¿Necesito ayuno?",
+    text: "Algunos estudios pueden requerir ayuno y otros no. Confirma las indicaciones específicas antes de acudir.",
   },
   {
-    number: "02",
-    title: "Recibe orientación",
-    text: "El laboratorio te informa sobre disponibilidad, costo y preparación.",
+    title: "¿Puedo tomar mis medicamentos?",
+    text: "Informa al personal si tomas medicamentos o suplementos. No los suspendas sin indicación de tu profesional de salud.",
   },
   {
-    number: "03",
-    title: "Acude al laboratorio",
-    text: "Preséntate en el horario indicado y sigue las recomendaciones correspondientes.",
+    title: "¿Debo evitar ejercicio antes del estudio?",
+    text: "Ciertos estudios pueden requerir evitar actividad física intensa previamente. Pregunta por las indicaciones de tu estudio.",
   },
   {
-    number: "04",
-    title: "Recibe tus resultados",
-    text: "Una vez listos y validados, te los enviamos por WhatsApp. El tiempo depende de cada estudio.",
-  },
-];
-
-const preparationCards = [
-  {
-    icon: "clock" as const,
-    title: "Ayuno",
-    text: "Algunos estudios pueden requerir ayuno. Confirma las indicaciones antes de acudir.",
-    image: "/pakal/preparacion.webp",
-    alt: "Profesional orientando a un paciente antes de un estudio",
+    title: "¿Cómo debo llevar una muestra?",
+    text: "La forma de recolección depende del estudio. Solicita las instrucciones antes de recolectar o trasladar cualquier muestra.",
   },
   {
-    icon: "activity" as const,
-    title: "Evita ejercicio intenso",
-    text: "Ciertos estudios pueden requerir evitar actividad física antes de la toma de muestra.",
-    image: "/hero-laboratorio-pakal.webp",
-    alt: "Profesional preparando cuidadosamente una muestra de laboratorio",
-  },
-  {
-    icon: "medicine" as const,
-    title: "Informa sobre medicamentos",
-    text: "Comunica al personal si tomas medicamentos o suplementos. No los suspendas sin indicación médica.",
-    image: "/pakal/equipo.webp",
-    alt: "Equipo profesional de Laboratorio Pakal",
-  },
-  {
-    icon: "cup" as const,
-    title: "Evita cafeína y alcohol",
-    text: "Pregunta si tu estudio requiere evitar ciertas bebidas o alimentos previamente.",
-    image: "/pakal/proceso.webp",
-    alt: "Procesamiento conceptual de muestras en el laboratorio",
-  },
-  {
-    icon: "instructions" as const,
-    title: "Sigue las indicaciones específicas",
-    text: "Los requisitos cambian según el estudio. Solicita orientación por WhatsApp.",
-    image: "/pakal/interior.webp",
-    alt: "Interior conceptual de Laboratorio Pakal",
+    title: "Tengo otra duda sobre mi preparación",
+    text: "Escríbenos por WhatsApp con el nombre de tus estudios y te orientamos antes de acudir.",
   },
 ];
 
@@ -135,6 +97,7 @@ const reasons = [
 ];
 
 type IconName =
+  | "home"
   | "clock"
   | "pin"
   | "chat"
@@ -146,14 +109,19 @@ type IconName =
   | "special"
   | "profile"
   | "tube"
-  | "activity"
-  | "medicine"
-  | "cup"
-  | "instructions"
   | "document"
   | "phone";
 
 function Icon({ name }: { name: IconName }) {
+  if (name === "home") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m4 10 8-6 8 6v9H5v-9" />
+        <path d="M9.5 19v-5h5v5" />
+      </svg>
+    );
+  }
+
   if (name === "clock") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -235,33 +203,7 @@ function Icon({ name }: { name: IconName }) {
     );
   }
 
-  if (name === "activity") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 12h4l2-4 3.2 8 2.2-4H21" />
-      </svg>
-    );
-  }
-
-  if (name === "medicine") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m8 17 8.8-8.8a3 3 0 1 0-4.2-4.2L3.8 12.8A3 3 0 1 0 8 17Z" />
-        <path d="m8.3 8.3 7.4 7.4" />
-      </svg>
-    );
-  }
-
-  if (name === "cup") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M5 7h12v7a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V7Z" />
-        <path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17M8 4.5v-2M12 4.5v-2" />
-      </svg>
-    );
-  }
-
-  if (name === "instructions" || name === "document") {
+  if (name === "document") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M7 4.5h10a2 2 0 0 1 2 2v13H5v-13a2 2 0 0 1 2-2Z" />
@@ -381,9 +323,8 @@ export default function Home() {
               <a href="#inicio">Inicio</a>
               <a href="#estudios">Estudios</a>
               <a href="#preparacion">Preparación</a>
-              <a href="#nosotros">Nosotros</a>
               <a href="#resultados">Resultados</a>
-              <a href="#contacto">Contacto</a>
+              <a href="#contacto">Ubicación</a>
               <WhatsAppLink className="button button--whatsapp">
                 Cotizar por WhatsApp
               </WhatsAppLink>
@@ -408,8 +349,8 @@ export default function Home() {
                 enviamos directamente por WhatsApp.
               </span>
               <span className="hero-lead-mobile">
-                Atención profesional en Palenque y entrega de resultados
-                directamente por WhatsApp.
+                Cotiza tus estudios, confirma tu preparación y recibe tus
+                resultados por WhatsApp.
               </span>
             </p>
 
@@ -418,11 +359,8 @@ export default function Home() {
                 Cotizar por WhatsApp
                 <Icon name="arrow" />
               </WhatsAppLink>
-              <a
-                className="button button--outline button--large"
-                href="#estudios"
-              >
-                Consultar servicios
+              <a className="button button--outline button--large" href="#estudios">
+                Consultar estudios
                 <Icon name="arrow" />
               </a>
             </div>
@@ -444,7 +382,7 @@ export default function Home() {
             <div className="hero-image">
               <Image
                 src="/pakal/recepcion.webp"
-                alt="Imagen conceptual de una profesional de Laboratorio Pakal atendiendo amablemente a una paciente"
+                alt="Imagen conceptual de una profesional de Laboratorio Pakal atendiendo a una paciente"
                 fill
                 sizes="(max-width: 850px) 100vw, 52vw"
                 priority
@@ -454,13 +392,9 @@ export default function Home() {
               <span className="hero-card-icon">
                 <Icon name="chat" />
               </span>
-              <p className="hero-card-copy hero-card-copy--desktop">
+              <p>
                 <strong>¿Tienes una orden médica?</strong>
                 Envíala por WhatsApp para solicitar información.
-              </p>
-              <p className="hero-card-copy hero-card-copy--mobile">
-                <strong>Resultados por WhatsApp</strong>
-                Directamente en tu celular
               </p>
             </div>
             <span className="image-label">Imagen conceptual temporal</span>
@@ -471,85 +405,134 @@ export default function Home() {
               Cotizar por WhatsApp
               <Icon name="arrow" />
             </WhatsAppLink>
-            <a className="hero-studies-link" href="#estudios">
-              Ver estudios <span aria-hidden="true">→</span>
-            </a>
-            <p className="hero-mobile-note">
-              <span className="hero-mobile-note-icon" aria-hidden="true">
-                <Icon name="document" />
-              </span>
-              Te enviamos tus resultados por WhatsApp una vez que estén listos y
-              validados. El tiempo depende de cada estudio.
-            </p>
           </div>
         </div>
       </section>
 
-      <section className="quick-info" aria-label="Información rápida">
-        <div className="container quick-grid">
-          <article>
-            <span className="line-icon">
-              <Icon name="clock" />
-            </span>
-            <div>
-              <p className="micro-label">Horario de atención</p>
-              <strong>{siteData.hours.weekdays}</strong>
-              <span>{siteData.hours.sunday}</span>
-            </div>
-          </article>
-          <article>
-            <span className="line-icon">
-              <Icon name="pin" />
-            </span>
-            <div>
-              <p className="micro-label">Ubicación</p>
-              <strong>{siteData.address}</strong>
-              <a
-                className="quick-link"
-                href={siteData.mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Abrir mapa
-              </a>
-            </div>
-          </article>
-          <article>
-            <span className="line-icon">
-              <Icon name="chat" />
-            </span>
-            <div>
-              <p className="micro-label">Resultados por WhatsApp</p>
-              <strong>Recibe tus resultados sin regresar a recogerlos</strong>
-              <span>
-                Te los enviamos por WhatsApp una vez que estén listos y validados.
+      <section className="task-hub" aria-label="Accesos rápidos">
+        <div className="container">
+          <div className="task-grid">
+            <a className="task-card" href="#estudios">
+              <span className="task-card-icon">
+                <Icon name="blood" />
               </span>
-            </div>
-          </article>
-          <article>
-            <span className="line-icon">
-              <Icon name="check" />
-            </span>
-            <div>
-              <p className="micro-label">Atención cercana</p>
-              <strong>Orientación clara y atención profesional</strong>
-              <span>
-                Consulta disponibilidad, preparación y costo de tus estudios.
+              <span className="task-card-copy">
+                <strong>Estudios</strong>
+                <small>Consulta nuestros servicios</small>
               </span>
+              <Icon name="arrow" />
+            </a>
+
+            <WhatsAppLink
+              className="task-card"
+              message="Hola, Laboratorio Pakal. Tengo una orden médica y quiero cotizar los estudios."
+            >
+              <span className="task-card-icon">
+                <Icon name="document" />
+              </span>
+              <span className="task-card-copy">
+                <strong>Cotizar orden</strong>
+                <small>Envíanos una fotografía</small>
+              </span>
+              <Icon name="arrow" />
+            </WhatsAppLink>
+
+            <a className="task-card" href="#resultados">
+              <span className="task-card-icon">
+                <Icon name="phone" />
+              </span>
+              <span className="task-card-copy">
+                <strong>Resultados</strong>
+                <small>Información de entrega</small>
+              </span>
+              <Icon name="arrow" />
+            </a>
+
+            <a
+              className="task-card"
+              href={siteData.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="task-card-icon">
+                <Icon name="pin" />
+              </span>
+              <span className="task-card-copy">
+                <strong>Cómo llegar</strong>
+                <small>Abrir Google Maps</small>
+              </span>
+              <Icon name="arrow" />
+            </a>
+          </div>
+
+          <div className="visit-strip">
+            <div>
+              <span className="visit-strip-icon">
+                <Icon name="clock" />
+              </span>
+              <p>
+                <small>Horario</small>
+                <strong>{siteData.hours.weekdays}</strong>
+                <span>{siteData.hours.sunday}</span>
+              </p>
             </div>
-          </article>
+            <div>
+              <span className="visit-strip-icon">
+                <Icon name="pin" />
+              </span>
+              <p>
+                <small>Ubicación</small>
+                <strong>Palenque, Chiapas</strong>
+                <span>Av. Juárez · arriba de COMEX</span>
+              </p>
+            </div>
+          </div>
+
+          <p className="data-note task-data-note">
+            Horarios y datos de contacto preliminares: confirmar con el laboratorio
+            antes de la publicación definitiva.
+          </p>
         </div>
-        <p className="data-note">
-          Horarios y datos de contacto preliminares: confirmar con el laboratorio
-          antes de la publicación definitiva.
-        </p>
+      </section>
+
+      <section className="order-cta order-cta--streamlined" id="cotizar">
+        <div className="container order-grid">
+          <div className="order-copy">
+            <p className="eyebrow eyebrow--light">Cotización sencilla</p>
+            <h2>¿Tienes una orden médica?</h2>
+            <p>
+              Envíanos una fotografía por WhatsApp. Te orientamos sobre
+              disponibilidad, preparación y costo de los estudios solicitados.
+            </p>
+            <WhatsAppLink
+              className="button button--whatsapp button--large"
+              message="Hola, Laboratorio Pakal. Tengo una orden médica y quiero cotizar mis estudios."
+            >
+              Enviar mi orden por WhatsApp
+              <Icon name="arrow" />
+            </WhatsAppLink>
+            <small>
+              Evita compartir datos personales en publicaciones o comentarios de
+              redes sociales.
+            </small>
+          </div>
+          <div className="order-visual">
+            <Image
+              src="/pakal/preparacion.webp"
+              alt="Imagen conceptual de orientación sobre una orden médica"
+              fill
+              sizes="(max-width: 850px) 100vw, 48vw"
+            />
+            <span>Imagen conceptual temporal</span>
+          </div>
+        </div>
       </section>
 
       <section className="section studies" id="estudios">
         <div className="container">
           <div className="section-title-centered">
             <p className="eyebrow">Estudios de laboratorio</p>
-            <h2>Nuestros servicios</h2>
+            <h2>¿Qué necesitas consultar?</h2>
             <span className="title-rule" aria-hidden="true" />
           </div>
 
@@ -561,10 +544,7 @@ export default function Home() {
                 </span>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <WhatsAppLink
-                  className="service-link"
-                  message={service.message}
-                >
+                <WhatsAppLink className="service-link" message={service.message}>
                   Solicitar información
                   <Icon name="arrow" />
                 </WhatsAppLink>
@@ -579,94 +559,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="order-cta">
-        <div className="container order-grid">
-          <div className="order-copy">
-            <p className="eyebrow eyebrow--light">Cotización sencilla</p>
-            <h2>¿Tienes una orden médica?</h2>
+      <section className="section preparation preparation-simple" id="preparacion">
+        <div className="container preparation-grid">
+          <div className="preparation-intro">
+            <p className="eyebrow">Antes de acudir</p>
+            <h2>Preparación sin complicaciones</h2>
             <p>
-              Envíanos una fotografía por WhatsApp para solicitar información
-              sobre disponibilidad, costo y preparación de tus estudios.
+              Los requisitos cambian según cada estudio. Revisa las dudas más
+              frecuentes y confirma tus indicaciones antes de acudir.
             </p>
-            <WhatsAppLink className="button button--whatsapp button--large">
-              Enviar orden por WhatsApp
-              <Icon name="arrow" />
-            </WhatsAppLink>
-            <small>
-              Evita compartir datos personales en publicaciones o comentarios de
-              redes sociales.
-            </small>
-          </div>
-          <div className="order-visual">
-            <Image
-              src="/pakal/preparacion.webp"
-              alt="Imagen conceptual de una profesional explicando una orden médica a un paciente"
-              fill
-              sizes="(max-width: 850px) 100vw, 48vw"
-            />
-            <span>Imagen conceptual temporal</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section process" aria-labelledby="process-title">
-        <div className="container">
-          <div className="section-heading section-heading--compact">
-            <div>
-              <p className="eyebrow">Una atención sencilla</p>
-              <h2 id="process-title">Así puedes solicitar información</h2>
+            <div className="preparation-image">
+              <Image
+                src="/pakal/preparacion.webp"
+                alt="Orientación previa a un estudio de laboratorio"
+                fill
+                sizes="(max-width: 850px) 100vw, 42vw"
+              />
             </div>
           </div>
 
-          <div className="process-grid">
-            {steps.map((step) => (
-              <article className="process-step" key={step.number}>
-                <span>{step.number}</span>
-                <div className="process-line" aria-hidden="true" />
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </article>
-            ))}
-          </div>
-          <p className="process-note">
-            Los requisitos y tiempos pueden variar según el estudio.
-          </p>
-        </div>
-      </section>
-
-      <section className="section preparation preparation-cards-section" id="preparacion">
-        <div className="container">
-          <div className="section-title-centered">
-            <p className="eyebrow">Antes de acudir</p>
-            <h2>Preparación para estudios</h2>
-            <span className="title-rule" aria-hidden="true" />
-          </div>
-
-          <div className="preparation-card-grid">
-            {preparationCards.map((card) => (
-              <article className="preparation-card" key={card.title}>
-                <div className="preparation-card-image">
-                  <Image
-                    src={card.image}
-                    alt={card.alt}
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1120px) 33vw, 20vw"
-                  />
-                </div>
-                <span className="preparation-card-icon">
-                  <Icon name={card.icon} />
-                </span>
-                <div className="preparation-card-copy">
-                  <h3>{card.title}</h3>
-                  <p>{card.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="preparation-action">
+          <div>
+            <div className="accordion">
+              {preparationFaqs.map((item, index) => (
+                <details key={item.title}>
+                  <summary>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {item.title}
+                    <i aria-hidden="true">+</i>
+                  </summary>
+                  <p>{item.text}</p>
+                </details>
+              ))}
+            </div>
             <WhatsAppLink
-              className="button button--blue button--large"
+              className="button button--blue button--large preparation-button"
               message="Hola, quiero confirmar cómo debo prepararme para mis estudios."
             >
               Consultar preparación por WhatsApp
@@ -688,18 +614,22 @@ export default function Home() {
               únicamente a recogerlos.
             </p>
             <p className="results-note">
-              El tiempo de entrega varía según el tipo de análisis. Al realizar tu
-              estudio, consulta el tiempo estimado correspondiente.
+              El tiempo de entrega varía según el tipo de análisis. Consulta el
+              tiempo estimado correspondiente al realizar tu estudio.
             </p>
             <WhatsAppLink
               className="button button--whatsapp button--large"
               message="Hola, quiero solicitar información sobre la entrega de mis resultados."
             >
-              Preguntar por mis resultados
+              Consultar mis resultados
               <Icon name="arrow" />
             </WhatsAppLink>
           </div>
-          <div className="results-visual" aria-label="Ilustración de un resultado recibido en el celular">
+
+          <div
+            className="results-visual"
+            aria-label="Ilustración de un resultado recibido en el celular"
+          >
             <div className="results-phone">
               <span className="results-phone-top">
                 <Icon name="phone" />
@@ -742,9 +672,8 @@ export default function Home() {
             <p className="eyebrow">Por qué elegir Laboratorio Pakal</p>
             <h2>Atención cercana en Palenque</h2>
             <p>
-              Queremos que cada persona reciba información clara y un trato
-              respetuoso desde que solicita una cotización hasta que recibe sus
-              resultados.
+              Información clara y un trato respetuoso desde que solicitas una
+              cotización hasta que recibes tus resultados.
             </p>
             <ul>
               {reasons.map((reason) => (
@@ -766,15 +695,45 @@ export default function Home() {
 
       <section className="section location" id="contacto">
         <div className="container">
-          <div className="section-heading">
+          <div className="section-heading location-heading">
             <div>
               <p className="eyebrow">Ubicación y horarios</p>
               <h2>Visítanos en Palenque</h2>
             </div>
             <p>
-              Estamos en una zona céntrica. Revisa la referencia y abre la ruta en
-              Google Maps antes de acudir.
+              Consulta la referencia y abre la ruta en Google Maps antes de acudir.
             </p>
+          </div>
+
+          <div className="mobile-location-summary">
+            <div>
+              <span><Icon name="pin" /></span>
+              <p>
+                <small>Dirección</small>
+                <strong>{siteData.address}</strong>
+              </p>
+            </div>
+            <div>
+              <span><Icon name="clock" /></span>
+              <p>
+                <small>Horario</small>
+                <strong>{siteData.hours.weekdays}</strong>
+                <em>{siteData.hours.sunday}</em>
+              </p>
+            </div>
+            <div className="mobile-location-actions">
+              <a
+                className="button button--blue"
+                href={siteData.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Cómo llegar
+              </a>
+              <WhatsAppLink className="button button--whatsapp">
+                WhatsApp
+              </WhatsAppLink>
+            </div>
           </div>
 
           <div className="location-layout">
@@ -807,9 +766,7 @@ export default function Home() {
               </div>
               <div className="location-contact">
                 <article>
-                  <span className="line-icon">
-                    <Icon name="pin" />
-                  </span>
+                  <span className="line-icon"><Icon name="pin" /></span>
                   <div>
                     <small>Dirección preliminar</small>
                     <strong>{siteData.address}</strong>
@@ -817,9 +774,7 @@ export default function Home() {
                   </div>
                 </article>
                 <article>
-                  <span className="line-icon">
-                    <Icon name="clock" />
-                  </span>
+                  <span className="line-icon"><Icon name="clock" /></span>
                   <div>
                     <small>Horario preliminar</small>
                     <strong>{siteData.hours.weekdays}</strong>
@@ -827,9 +782,7 @@ export default function Home() {
                   </div>
                 </article>
                 <article>
-                  <span className="line-icon">
-                    <Icon name="chat" />
-                  </span>
+                  <span className="line-icon"><Icon name="chat" /></span>
                   <div>
                     <small>Teléfono y WhatsApp</small>
                     <strong>{siteData.phoneDisplay}</strong>
@@ -883,9 +836,7 @@ export default function Home() {
       <footer>
         <div className="container footer-grid">
           <div className="footer-brand">
-            <a href="#inicio" aria-label="Volver al inicio">
-              <Logo inverse />
-            </a>
+            <a href="#inicio" aria-label="Volver al inicio"><Logo inverse /></a>
             <p>
               Información clara sobre estudios, preparación, horarios y ubicación
               en Palenque, Chiapas.
@@ -902,9 +853,7 @@ export default function Home() {
             <small>Contacto</small>
             <WhatsAppLink>WhatsApp · {siteData.phoneDisplay}</WhatsAppLink>
             <a href={`mailto:${siteData.email}`}>{siteData.email}</a>
-            <a href={siteData.facebookUrl} target="_blank" rel="noreferrer">
-              Facebook
-            </a>
+            <a href={siteData.facebookUrl} target="_blank" rel="noreferrer">Facebook</a>
           </div>
           <div>
             <small>Visítanos</small>
@@ -915,8 +864,8 @@ export default function Home() {
         </div>
         <div className="container privacy-note" id="privacidad">
           <p>
-            Aviso de privacidad: integrar el documento oficial proporcionado por el
-            laboratorio antes de publicar.
+            Aviso de privacidad: integrar el documento oficial proporcionado por
+            el laboratorio antes de publicar.
           </p>
         </div>
         <div className="container footer-bottom">
@@ -926,10 +875,27 @@ export default function Home() {
         </div>
       </footer>
 
+      <nav className="mobile-bottom-nav" aria-label="Accesos rápidos móviles">
+        <a href="#inicio">
+          <Icon name="home" />
+          <span>Inicio</span>
+        </a>
+        <a href="#estudios">
+          <Icon name="blood" />
+          <span>Estudios</span>
+        </a>
+        <WhatsAppLink className="mobile-bottom-nav-whatsapp">
+          <span className="mobile-bottom-nav-main-icon"><Icon name="chat" /></span>
+          <span>WhatsApp</span>
+        </WhatsAppLink>
+        <a href="#contacto">
+          <Icon name="pin" />
+          <span>Ubicación</span>
+        </a>
+      </nav>
+
       <WhatsAppLink className="whatsapp-float">
-        <span>
-          <Icon name="chat" />
-        </span>
+        <span><Icon name="chat" /></span>
         <small>Cotizar</small>
       </WhatsAppLink>
     </main>
