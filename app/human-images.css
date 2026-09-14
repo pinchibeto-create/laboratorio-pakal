@@ -1,0 +1,179 @@
+/* Capa visual para devolver cercanía humana a la experiencia móvil.
+   Conserva la navegación rápida y la identidad visual existente de Pakal. */
+
+@media (max-width: 700px) {
+  /* Hero: CTA primero, imagen inmediatamente después. */
+  .hero-copy {
+    order: 1;
+  }
+
+  .hero-mobile-actions {
+    order: 2;
+  }
+
+  .hero-visual {
+    order: 3;
+    display: block;
+    min-height: 238px;
+    margin-top: 2px;
+  }
+
+  .hero-image {
+    inset: 0;
+    border-radius: 20px;
+    box-shadow: 0 16px 34px rgba(7, 59, 92, 0.12);
+  }
+
+  .hero-image img {
+    object-position: 50% 42%;
+  }
+
+  .hero-card {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    width: auto;
+    max-width: 292px;
+    padding: 11px 13px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 28px rgba(7, 59, 92, 0.16);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-card-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--whatsapp);
+  }
+
+  .hero-card p {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .hero-card strong {
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+
+  .hero .image-label {
+    display: none;
+  }
+
+  /* Orden médica: mantiene el CTA protagonista y añade contexto humano. */
+  .order-cta--streamlined .order-grid {
+    gap: 26px;
+  }
+
+  .order-cta--streamlined .order-visual {
+    display: block;
+    min-height: 225px;
+    border-radius: 20px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+  }
+
+  .order-cta--streamlined .order-visual > span {
+    display: none;
+  }
+
+  .order-cta--streamlined .order-visual img {
+    object-position: 50% 44%;
+  }
+
+  /* Preparación: una sola imagen breve antes de las preguntas frecuentes. */
+  .preparation-simple .preparation-grid {
+    gap: 22px;
+  }
+
+  .preparation-simple .preparation-image {
+    display: block;
+    min-height: 205px;
+    margin-top: 22px;
+    border-radius: 18px;
+    box-shadow: 0 14px 30px rgba(7, 59, 92, 0.09);
+  }
+
+  .preparation-simple .preparation-image img {
+    object-position: 50% 40%;
+  }
+
+  /* Nosotros: vuelve a enseñar personas/equipo antes de los argumentos de confianza. */
+  .about-grid {
+    gap: 26px;
+  }
+
+  .about-visual {
+    display: block;
+    min-height: 260px;
+  }
+
+  .about-shape {
+    width: 235px;
+    height: 235px;
+    top: 0;
+    left: -38px;
+  }
+
+  .about-image {
+    inset: 0 0 0 26px;
+    border-radius: 90px 22px 22px 22px;
+    box-shadow: 0 16px 34px rgba(7, 59, 92, 0.12);
+  }
+
+  .about-image img {
+    object-position: 50% 38%;
+  }
+
+  .about .image-label {
+    display: none;
+  }
+
+  /* Ubicación: foto del espacio antes del mapa para que el visitante reconozca el lugar. */
+  .location-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .location-details {
+    order: -1;
+    display: block;
+  }
+
+  .location-photo {
+    display: block;
+    min-height: 205px;
+    border-radius: 18px;
+    box-shadow: 0 14px 30px rgba(7, 59, 92, 0.09);
+  }
+
+  .location-photo img {
+    object-position: 50% 48%;
+  }
+
+  .location-photo > span,
+  .location-contact {
+    display: none;
+  }
+
+  .map-card {
+    min-height: 285px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-visual {
+    min-height: 218px;
+  }
+
+  .order-cta--streamlined .order-visual,
+  .preparation-simple .preparation-image,
+  .location-photo {
+    min-height: 190px;
+  }
+
+  .about-visual {
+    min-height: 235px;
+  }
+}
