@@ -28,11 +28,37 @@
       "whatsapp": "#25D366"
     }
   },
+  "business": {
+    "phone": "+52 916 102 0613",
+    "whatsapp": "+52 916 102 0613",
+    "email": "laboratoriopakal@gmail.com",
+    "hours": {
+      "mondayToSaturday": "06:30-20:00",
+      "sunday": "07:00-13:00"
+    },
+    "branches": [
+      {
+        "id": "juarez",
+        "name": "Sucursal Av. Juárez",
+        "address": "Av. Juárez S/N, altos, arriba de COMEX, Barrio San José, Palenque, Chiapas, C.P. 29960.",
+        "reference": "Arriba de COMEX, entre COMEX y Agroveterinaria.",
+        "maps": "https://www.google.com/maps/search/?api=1&query=Laboratorio+Pakal+Av.+Juarez+Palenque+Chiapas"
+      },
+      {
+        "id": "cinco-mayo",
+        "name": "Sucursal Av. 5 de Mayo",
+        "address": "Av. 5 de Mayo, entre Aldama y Abasolo, Palenque, Chiapas, C.P. 29960.",
+        "reference": "Entre Aldama y Abasolo.",
+        "maps": "https://www.google.com/maps/search/?api=1&query=Laboratorio+Pakal+Avenida+5+de+Mayo+entre+Aldama+y+Abasolo+Palenque+Chiapas"
+      }
+    ]
+  },
   "positioning": {
     "primary": "Análisis clínicos en Palenque",
     "tagline": "Resultados confiables para cuidar tu salud",
     "differentiators": [
       "atención cercana",
+      "dos sucursales en Palenque",
       "orientación por WhatsApp",
       "resultados por WhatsApp"
     ]
@@ -52,8 +78,10 @@
       "consultar estudios",
       "cotizar orden médica",
       "consultar resultados",
+      "ver sucursales",
       "cómo llegar"
     ],
-    "mobileNavigation": ["inicio", "estudios", "whatsapp", "ubicación"]
+    "mobileNavigation": ["inicio", "estudios", "sucursales"],
+    "floatingContact": ["llamada", "whatsapp"]
   }
 }
