@@ -3,13 +3,14 @@ import "./globals.css";
 import "./mobile-refresh.css";
 import "./human-images.css";
 import "./official-refresh.css";
+import "./branch-primary-whatsapp.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakal.netlify.app";
 
 const title = "Laboratorio Pakal | Análisis clínicos en Palenque, Chiapas";
 const description =
-  "Laboratorio de análisis clínicos en Palenque, Chiapas, con sucursales en Av. Juárez y Av. 5 de Mayo. Consulta estudios, preparación, horarios, ubicación y atención por WhatsApp.";
+  "Laboratorio de análisis clínicos en Palenque, Chiapas, con sucursal principal en Av. 5 de Mayo y sucursal en Av. Juárez. Consulta estudios, preparación, horarios, ubicación y atención por WhatsApp.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -23,8 +24,8 @@ export const metadata: Metadata = {
     "laboratorio clínico Palenque",
     "análisis clínicos Palenque",
     "Laboratorio Pakal",
-    "laboratorio Av. Juárez Palenque",
     "laboratorio Av. 5 de Mayo Palenque",
+    "laboratorio Av. Juárez Palenque",
     "estudios de laboratorio Chiapas",
     "laboratorio cerca de mí Palenque",
   ],
