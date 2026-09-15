@@ -147,6 +147,22 @@
   color: #fff;
 }
 
+/* Mensaje de conversión justo debajo del CTA inicial. */
+.hero-actions--desktop::after,
+.hero-mobile-actions::after {
+  display: block;
+  width: 100%;
+  max-width: 570px;
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 3px solid rgba(37, 211, 102, 0.72);
+  color: #5e7180;
+  content: "¿Ya tienes una orden médica o una cotización? Envíanos una foto por WhatsApp y te decimos cuánto cuestan tus estudios en Laboratorio Pakal.";
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
 @media (max-width: 700px) {
   .branches-grid .branch-card:nth-child(2)::before {
     top: 10px;
@@ -163,6 +179,13 @@
   .floating-whatsapp svg {
     width: 29px;
     height: 29px;
+  }
+
+  .hero-mobile-actions::after {
+    margin-top: 12px;
+    padding-left: 10px;
+    font-size: 11.5px;
+    line-height: 1.5;
   }
 }
 
