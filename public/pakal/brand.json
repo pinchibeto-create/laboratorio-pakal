@@ -32,24 +32,27 @@
     "phone": "+52 916 102 0613",
     "whatsapp": "+52 916 102 0613",
     "email": "laboratoriopakal@gmail.com",
+    "primaryBranch": "cinco-mayo",
     "hours": {
       "mondayToSaturday": "06:30-20:00",
       "sunday": "07:00-13:00"
     },
     "branches": [
       {
-        "id": "juarez",
-        "name": "Sucursal Av. Juárez",
-        "address": "Av. Juárez S/N, altos, arriba de COMEX, Barrio San José, Palenque, Chiapas, C.P. 29960.",
-        "reference": "Arriba de COMEX, entre COMEX y Agroveterinaria.",
-        "maps": "https://www.google.com/maps/search/?api=1&query=Laboratorio+Pakal+Av.+Juarez+Palenque+Chiapas"
-      },
-      {
         "id": "cinco-mayo",
         "name": "Sucursal Av. 5 de Mayo",
+        "role": "principal",
         "address": "Av. 5 de Mayo, entre Aldama y Abasolo, Palenque, Chiapas, C.P. 29960.",
         "reference": "Entre Aldama y Abasolo.",
         "maps": "https://www.google.com/maps/search/?api=1&query=Laboratorio+Pakal+Avenida+5+de+Mayo+entre+Aldama+y+Abasolo+Palenque+Chiapas"
+      },
+      {
+        "id": "juarez",
+        "name": "Sucursal Av. Juárez",
+        "role": "sucursal",
+        "address": "Av. Juárez S/N, altos, arriba de COMEX, Barrio San José, Palenque, Chiapas, C.P. 29960.",
+        "reference": "Arriba de COMEX, entre COMEX y Agroveterinaria.",
+        "maps": "https://www.google.com/maps/search/?api=1&query=Laboratorio+Pakal+Av.+Juarez+Palenque+Chiapas"
       }
     ]
   },
@@ -59,6 +62,7 @@
     "differentiators": [
       "atención cercana",
       "dos sucursales en Palenque",
+      "sucursal principal en Av. 5 de Mayo",
       "orientación por WhatsApp",
       "resultados por WhatsApp"
     ]
