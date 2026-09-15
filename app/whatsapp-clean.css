@@ -1,0 +1,94 @@
+/* Limpieza visual del ícono de WhatsApp: una sola forma, sin colas superpuestas. */
+
+.floating-whatsapp,
+.branch-icon-whatsapp {
+  overflow: hidden;
+  border: 3px solid #fff;
+  background: #25d366;
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(7, 59, 92, 0.07),
+    0 10px 24px rgba(7, 59, 92, 0.16);
+}
+
+.floating-whatsapp {
+  width: 56px;
+  height: 56px;
+  animation: whatsapp-float-clean 5.8s ease-in-out infinite;
+}
+
+.branch-icon-whatsapp {
+  border-width: 2px;
+}
+
+/* El SVG ya contiene la cola del globo; eliminamos las piezas CSS duplicadas. */
+.floating-whatsapp::before,
+.floating-whatsapp::after,
+.branch-icon-whatsapp::before,
+.branch-icon-whatsapp::after {
+  display: none;
+  content: none;
+}
+
+.floating-whatsapp svg,
+.branch-icon-whatsapp svg {
+  position: relative;
+  z-index: 1;
+  width: 29px;
+  height: 29px;
+  color: #fff;
+  filter: none;
+}
+
+.floating-whatsapp svg path:first-child,
+.branch-icon-whatsapp svg path:first-child {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.75;
+}
+
+.floating-whatsapp svg path:nth-child(2),
+.branch-icon-whatsapp svg path:nth-child(2) {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 0.7;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible,
+.branch-icon-whatsapp:hover,
+.branch-icon-whatsapp:focus-visible {
+  background: #20c95e;
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(7, 59, 92, 0.07),
+    0 12px 28px rgba(7, 59, 92, 0.19);
+}
+
+@keyframes whatsapp-float-clean {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 700px) {
+  .floating-whatsapp {
+    width: 53px;
+    height: 53px;
+  }
+
+  .floating-whatsapp svg {
+    width: 27px;
+    height: 27px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-whatsapp {
+    animation: none;
+  }
+}
