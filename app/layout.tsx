@@ -1,55 +1,70 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 import "./mobile-refresh.css";
 import "./human-images.css";
+import "./official-refresh.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "localhost:3000";
-  const forwardedProtocol = requestHeaders.get("x-forwarded-proto");
-  const protocol =
-    forwardedProtocol ?? (host.startsWith("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
-  const title =
-    "Laboratorio Pakal | Análisis clínicos en Palenque, Chiapas";
-  const description =
-    "Consulta información sobre estudios, horarios, ubicación y preparación en Laboratorio Pakal, en Palenque, Chiapas.";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakal.netlify.app";
 
-  return {
+const title = "Laboratorio Pakal | Análisis clínicos en Palenque, Chiapas";
+const description =
+  "Laboratorio de análisis clínicos en Palenque, Chiapas, con sucursales en Av. Juárez y Av. 5 de Mayo. Consulta estudios, preparación, horarios, ubicación y atención por WhatsApp.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  applicationName: "Laboratorio Pakal",
+  category: "salud",
+  creator: "Laboratorio Pakal",
+  publisher: "Laboratorio Pakal",
+  keywords: [
+    "laboratorio clínico Palenque",
+    "análisis clínicos Palenque",
+    "Laboratorio Pakal",
+    "laboratorio Av. Juárez Palenque",
+    "laboratorio Av. 5 de Mayo Palenque",
+    "estudios de laboratorio Chiapas",
+    "laboratorio cerca de mí Palenque",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
     title,
     description,
-    keywords: [
-      "laboratorio clínico Palenque",
-      "análisis clínicos Palenque",
-      "Laboratorio Pakal",
-      "estudios de laboratorio Chiapas",
+    type: "website",
+    locale: "es_MX",
+    url: "/",
+    siteName: "Laboratorio Pakal",
+    images: [
+      {
+        url: "/og.webp",
+        width: 1000,
+        height: 667,
+        alt: "Laboratorio Pakal, análisis clínicos en Palenque, Chiapas.",
+      },
     ],
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      locale: "es_MX",
-      images: [
-        {
-          url: `${origin}/og.webp`,
-          width: 1000,
-          height: 667,
-          alt: "Laboratorio Pakal, análisis clínicos en Palenque, Chiapas.",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [`${origin}/og.webp`],
-    },
-  };
-}
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og.webp"],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -57,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es-MX">
       <body>{children}</body>
     </html>
   );
