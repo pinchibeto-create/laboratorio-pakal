@@ -4,6 +4,7 @@ import "./mobile-refresh.css";
 import "./human-images.css";
 import "./official-refresh.css";
 import "./branch-primary-whatsapp.css";
+import "./whatsapp-clean.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakal.netlify.app";
