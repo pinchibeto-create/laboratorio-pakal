@@ -1,98 +1,94 @@
-/* Botón flotante de WhatsApp: círculo limpio y moderno. */
+/* WhatsApp: usar el logotipo proporcionado por el usuario como referencia visual. */
 
 .floating-whatsapp,
 .branch-icon-whatsapp {
+  position: relative;
   overflow: hidden;
   border-radius: 50%;
-  background: #25d366;
-  color: #fff;
+  border: 0;
+  background: transparent;
+  color: transparent;
   box-shadow:
     0 1px 2px rgba(7, 59, 92, 0.08),
     0 10px 26px rgba(7, 59, 92, 0.18);
 }
 
-/* Botón flotante principal: siempre circular. */
 .floating-whatsapp {
   width: 58px;
   min-width: 58px;
   height: 58px;
   padding: 0;
-  border: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   transition:
     transform 180ms ease,
-    background-color 180ms ease,
     box-shadow 180ms ease;
   animation: whatsapp-entrance 420ms ease-out both;
 }
 
-/* Sin etiqueta ni elementos añadidos: solo el ícono. */
+.branch-icon-whatsapp {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .floating-whatsapp::before,
+.branch-icon-whatsapp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 50%;
+  background-image: url("data:image/webp;base64,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");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: filter 180ms ease;
+}
+
 .floating-whatsapp::after,
-.branch-icon-whatsapp::before,
 .branch-icon-whatsapp::after {
   display: none;
   content: none;
 }
 
-.branch-icon-whatsapp {
-  border: 2px solid #fff;
-}
-
 .floating-whatsapp svg,
 .branch-icon-whatsapp svg {
-  position: relative;
-  z-index: 1;
-  width: 30px;
-  height: 30px;
-  flex: 0 0 auto;
-  color: #fff;
-  filter: none;
-}
-
-.floating-whatsapp svg path:first-child,
-.branch-icon-whatsapp svg path:first-child {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.75;
-}
-
-.floating-whatsapp svg path:nth-child(2),
-.branch-icon-whatsapp svg path:nth-child(2) {
-  fill: #fff;
-  stroke: #fff;
-  stroke-width: 0.7;
+  display: none;
 }
 
 .floating-whatsapp:hover,
-.floating-whatsapp:focus-visible {
-  background: #20c95e;
-  color: #fff;
+.floating-whatsapp:focus-visible,
+.branch-icon-whatsapp:hover,
+.branch-icon-whatsapp:focus-visible {
   transform: translateY(-2px) scale(1.03);
   box-shadow:
     0 1px 2px rgba(7, 59, 92, 0.08),
     0 14px 32px rgba(7, 59, 92, 0.22);
 }
 
-.floating-whatsapp:active {
+.floating-whatsapp:hover::before,
+.floating-whatsapp:focus-visible::before,
+.branch-icon-whatsapp:hover::before,
+.branch-icon-whatsapp:focus-visible::before {
+  filter: brightness(0.97);
+}
+
+.floating-whatsapp:active,
+.branch-icon-whatsapp:active {
   transform: translateY(0) scale(0.97);
 }
 
-.floating-whatsapp:focus-visible {
+.floating-whatsapp:focus-visible,
+.branch-icon-whatsapp:focus-visible {
   outline: 3px solid rgba(37, 211, 102, 0.28);
   outline-offset: 4px;
-}
-
-.branch-icon-whatsapp:hover,
-.branch-icon-whatsapp:focus-visible {
-  background: #20c95e;
-  color: #fff;
-  box-shadow:
-    0 0 0 1px rgba(7, 59, 92, 0.07),
-    0 12px 28px rgba(7, 59, 92, 0.19);
 }
 
 @keyframes whatsapp-entrance {
@@ -113,15 +109,24 @@
     height: 56px;
   }
 
-  .floating-whatsapp svg {
-    width: 29px;
-    height: 29px;
+  .branch-icon-whatsapp {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .floating-whatsapp {
+  .floating-whatsapp,
+  .branch-icon-whatsapp {
     animation: none;
     transition: none;
+  }
+
+  .floating-whatsapp:hover,
+  .floating-whatsapp:focus-visible,
+  .branch-icon-whatsapp:hover,
+  .branch-icon-whatsapp:focus-visible {
+    transform: none;
   }
 }
