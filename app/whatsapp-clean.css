@@ -1,29 +1,57 @@
-/* Limpieza visual del ícono de WhatsApp: una sola forma, sin colas superpuestas. */
+/* Botón flotante de WhatsApp: limpio, moderno y orientado a conversión. */
 
 .floating-whatsapp,
 .branch-icon-whatsapp {
   overflow: hidden;
-  border: 3px solid #fff;
   background: #25d366;
   color: #fff;
   box-shadow:
-    0 0 0 1px rgba(7, 59, 92, 0.07),
-    0 10px 24px rgba(7, 59, 92, 0.16);
+    0 1px 2px rgba(7, 59, 92, 0.08),
+    0 10px 26px rgba(7, 59, 92, 0.18);
 }
 
+/* Desktop: CTA tipo píldora, más claro y elegante. */
 .floating-whatsapp {
-  width: 56px;
-  height: 56px;
-  animation: whatsapp-float-clean 5.8s ease-in-out infinite;
+  width: auto;
+  min-width: 126px;
+  height: 54px;
+  padding: 0 18px 0 14px;
+  border: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+  animation: whatsapp-entrance 420ms ease-out both;
+}
+
+.floating-whatsapp::before {
+  display: none;
+  content: none;
+}
+
+.floating-whatsapp::after {
+  display: inline-block;
+  content: "Cotizar";
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .branch-icon-whatsapp {
-  border-width: 2px;
+  border: 2px solid #fff;
+  border-radius: 999px;
 }
 
-/* El SVG ya contiene la cola del globo; eliminamos las piezas CSS duplicadas. */
-.floating-whatsapp::before,
-.floating-whatsapp::after,
+/* En las tarjetas de sucursal mantenemos el botón circular y sin texto. */
 .branch-icon-whatsapp::before,
 .branch-icon-whatsapp::after {
   display: none;
@@ -34,8 +62,9 @@
 .branch-icon-whatsapp svg {
   position: relative;
   z-index: 1;
-  width: 29px;
-  height: 29px;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
   color: #fff;
   filter: none;
 }
@@ -55,7 +84,24 @@
 }
 
 .floating-whatsapp:hover,
-.floating-whatsapp:focus-visible,
+.floating-whatsapp:focus-visible {
+  background: #20c95e;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 2px rgba(7, 59, 92, 0.08),
+    0 14px 32px rgba(7, 59, 92, 0.22);
+}
+
+.floating-whatsapp:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.floating-whatsapp:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.28);
+  outline-offset: 4px;
+}
+
 .branch-icon-whatsapp:hover,
 .branch-icon-whatsapp:focus-visible {
   background: #20c95e;
@@ -65,30 +111,42 @@
     0 12px 28px rgba(7, 59, 92, 0.19);
 }
 
-@keyframes whatsapp-float-clean {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes whatsapp-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
   }
-  50% {
-    transform: translateY(-3px);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
+/* Móvil: vuelve a círculo para no competir con la barra inferior. */
 @media (max-width: 700px) {
   .floating-whatsapp {
-    width: 53px;
-    height: 53px;
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    padding: 0;
+    border-radius: 50%;
+    gap: 0;
+  }
+
+  .floating-whatsapp::after {
+    display: none;
+    content: none;
   }
 
   .floating-whatsapp svg {
-    width: 27px;
-    height: 27px;
+    width: 28px;
+    height: 28px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .floating-whatsapp {
     animation: none;
+    transition: none;
   }
 }
