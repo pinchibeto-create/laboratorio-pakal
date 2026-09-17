@@ -5,6 +5,7 @@ import "./human-images.css";
 import "./official-refresh.css";
 import "./branch-primary-whatsapp.css";
 import "./whatsapp-clean.css";
+import "./whatsapp-logo-fix.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakal.netlify.app";
@@ -71,7 +72,7 @@ export const metadata: Metadata = {
 const primaryBranchScript = `
 (() => {
   const primaryMapsUrl = "https://maps.app.goo.gl/ZLTyyf2BdJSRh7Tn7";
-  const primaryMapEmbed = "https://www.google.com/maps?q=Laboratorio+Pakal+Avenida+5+de+Mayo+entre+Aldama+y+Abasolo+Palenque+Chiapas&output=embed";
+  const primaryMapEmbed = "https://www.google.com/maps?q=Av.+5+de+Mayo,+entre+Aldama+y+Abasolo,+Palenque,+Chiapas,+29960&output=embed";
 
   const applyPrimaryBranch = () => {
     const primaryCard = document.getElementById("sucursal-cinco-mayo");
