@@ -5,6 +5,7 @@ import "./human-images.css";
 import "./official-refresh.css";
 import "./branch-primary-whatsapp.css";
 import "./whatsapp-clean.css";
+import "./seo-pages.css";
 
 const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakalpalenque.com"
