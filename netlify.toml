@@ -4,3 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "22.13.0"
+  NEXT_PUBLIC_SITE_URL = "https://laboratoriopakalpalenque.com"
