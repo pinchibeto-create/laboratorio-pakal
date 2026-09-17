@@ -5,7 +5,6 @@ import "./human-images.css";
 import "./official-refresh.css";
 import "./branch-primary-whatsapp.css";
 import "./whatsapp-clean.css";
-import "./whatsapp-logo-fix.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakal.netlify.app";
@@ -69,41 +68,6 @@ export const metadata: Metadata = {
   },
 };
 
-const primaryBranchScript = `
-(() => {
-  const primaryMapsUrl = "https://maps.app.goo.gl/ZLTyyf2BdJSRh7Tn7";
-  const primaryMapEmbed = "https://www.google.com/maps?q=Av.+5+de+Mayo,+entre+Aldama+y+Abasolo,+Palenque,+Chiapas,+29960&output=embed";
-
-  const applyPrimaryBranch = () => {
-    const primaryCard = document.getElementById("sucursal-cinco-mayo");
-
-    if (primaryCard) {
-      const mapButton = primaryCard.querySelector(".branch-map-button");
-      const mapFrame = primaryCard.querySelector(".branch-map iframe");
-      const branchLabel = primaryCard.querySelector(".branch-title-row small");
-
-      if (mapButton) mapButton.setAttribute("href", primaryMapsUrl);
-      if (mapFrame) mapFrame.setAttribute("src", primaryMapEmbed);
-      if (branchLabel) branchLabel.textContent = "Laboratorio Pakal · Sucursal principal";
-    }
-
-    document.querySelectorAll(".footer-branch").forEach((branch) => {
-      const branchName = branch.querySelector("strong")?.textContent ?? "";
-      if (branchName.includes("5 de Mayo")) {
-        const link = branch.querySelector("a");
-        if (link) link.setAttribute("href", primaryMapsUrl);
-      }
-    });
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", applyPrimaryBranch, { once: true });
-  } else {
-    applyPrimaryBranch();
-  }
-})();
-`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -113,7 +77,7 @@ export default function RootLayout({
     <html lang="es-MX">
       <body>
         {children}
-        <script dangerouslySetInnerHTML={{ __html: primaryBranchScript }} />
+        <script src="/pakal-fixes.js" defer />
       </body>
     </html>
   );
