@@ -6,12 +6,13 @@ import "./official-refresh.css";
 import "./branch-primary-whatsapp.css";
 import "./whatsapp-clean.css";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakal.netlify.app";
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://laboratoriopakalpalenque.com"
+).replace(/\/$/, "");
 
-const title = "Laboratorio Pakal | Análisis clínicos en Palenque, Chiapas";
+const title = "Laboratorio clínico en Palenque | Cotiza tus estudios | Pakal";
 const description =
-  "Laboratorio de análisis clínicos en Palenque, Chiapas, con sucursal principal en Av. 5 de Mayo y sucursal en Av. Juárez. Consulta estudios, preparación, horarios, ubicación y atención por WhatsApp.";
+  "¿Tienes una orden médica? Envíala por WhatsApp y cotiza tus estudios de laboratorio en Palenque. Consulta preparación, horarios, sucursales y recibe tus resultados por WhatsApp.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -25,13 +26,17 @@ export const metadata: Metadata = {
     "laboratorio clínico Palenque",
     "análisis clínicos Palenque",
     "Laboratorio Pakal",
+    "cotizar estudios laboratorio Palenque",
+    "precios laboratorio Palenque",
+    "estudios de laboratorio Palenque",
+    "laboratorio cerca de mí Palenque",
+    "laboratorio abierto domingo Palenque",
+    "resultados de laboratorio por WhatsApp",
     "laboratorio Av. 5 de Mayo Palenque",
     "laboratorio Av. Juárez Palenque",
-    "estudios de laboratorio Chiapas",
-    "laboratorio cerca de mí Palenque",
   ],
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   robots: {
     index: true,
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     description,
     type: "website",
     locale: "es_MX",
-    url: "/",
+    url: siteUrl,
     siteName: "Laboratorio Pakal",
     images: [
       {
