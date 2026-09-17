@@ -70,8 +70,8 @@ export const metadata: Metadata = {
 
 const primaryBranchScript = `
 (() => {
-  const primaryMapsUrl = "https://maps.app.goo.gl/AJCZmanSNWQB8Bgt8";
-  const primaryMapEmbed = "https://www.google.com/maps?q=17.5087934,-91.9830379&output=embed";
+  const primaryMapsUrl = "https://maps.app.goo.gl/ZLTyyf2BdJSRh7Tn7";
+  const primaryMapEmbed = "https://www.google.com/maps?q=Laboratorio+Pakal+Avenida+5+de+Mayo+entre+Aldama+y+Abasolo+Palenque+Chiapas&output=embed";
 
   const applyPrimaryBranch = () => {
     const primaryCard = document.getElementById("sucursal-cinco-mayo");
