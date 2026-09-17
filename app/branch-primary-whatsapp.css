@@ -27,14 +27,32 @@
   backdrop-filter: blur(8px);
 }
 
-/* En el resumen visual también nombramos primero la principal. */
+/* En el resumen visual nombramos explícitamente la ubicación principal. */
+.visit-strip--official > div:nth-child(2) small {
+  font-size: 0;
+}
+
+.visit-strip--official > div:nth-child(2) small::after {
+  content: "Sucursal principal";
+  font-size: 10px;
+}
+
 .visit-strip--official > div:nth-child(2) strong {
   font-size: 0;
 }
 
 .visit-strip--official > div:nth-child(2) strong::after {
-  content: "Av. 5 de Mayo y Av. Juárez";
+  content: "Av. 5 de Mayo";
   font-size: 12px;
+}
+
+.visit-strip--official > div:nth-child(2) span {
+  font-size: 0;
+}
+
+.visit-strip--official > div:nth-child(2) span::after {
+  content: "Palenque, Chiapas · También Av. Juárez";
+  font-size: 11px;
 }
 
 /* En el pie de página, Av. 5 de Mayo aparece primero. */
